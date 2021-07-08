@@ -2,9 +2,9 @@
 using namespace std;
   
 // Number of vertices in the graph 
-#define V 5 
+#define V 6 
   
-// A utility function to find the vertex with 
+// A function to find the vertex with 
 // minimum key value, from the set of vertices 
 // not yet included in MST 
 int minKey(int key[], bool mstSet[]) 
@@ -18,14 +18,11 @@ int minKey(int key[], bool mstSet[])
   
     return min_index; 
 } 
-  
-// A utility function to print the 
-// constructed MST stored in parent[] 
 void printMST(int parent[], int graph[V][V]) 
 { 
     cout<<"Edge \tWeight\n"; 
     for (int i = 1; i < V; i++) 
-        cout<<parent[i]<<" - "<<i<<" \t"<<graph[i][parent[i]]<<" \n"; 
+        cout<<char(65+parent[i])<<" - "<<char(65+i)<<" \t"<<graph[i][parent[i]]<<" \n"; 
 } 
   
 // Function to construct and print MST for 
@@ -77,23 +74,15 @@ void primMST(int graph[V][V])
     // print the constructed MST 
     printMST(parent, graph); 
 } 
-  
-// Driver code
+//let u take an example for the following graph
 int main() 
 { 
-    /* Let us create the following graph 
-        2 3 
-    (0)--(1)--(2) 
-    | / \ | 
-    6| 8/ \5 |7 
-    | / \ | 
-    (3)-------(4) 
-            9     */
-    int graph[V][V] = { { 0, 2, 0, 6, 0 }, 
-                        { 2, 0, 3, 8, 5 }, 
-                        { 0, 3, 0, 0, 7 }, 
-                        { 6, 8, 0, 0, 9 }, 
-                        { 0, 5, 7, 9, 0 } }; 
+    int graph[V][V] = { { 0, 2, 3, 0, 0, 0 }, 
+                        { 2, 0, 5, 3, 4, 0 }, 
+                        { 3, 5, 0, 0, 4, 0 }, 
+                        { 0, 3, 0, 0, 2, 3 }, 
+                        { 0, 4, 4, 2, 0, 5 },
+						{ 0, 0, 0, 3, 5, 0 } }; 
   
     // Print the solution 
     primMST(graph); 
@@ -101,5 +90,5 @@ int main()
     return 0; 
 } 
   
-// Code Author - Suhotra Dey
+// Code Author-Suhotra Dey
 //Roll - 16900319051

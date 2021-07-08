@@ -19,10 +19,15 @@ int minKey(int key[], bool mstSet[])
     return min_index; 
 } 
 void printMST(int parent[], int graph[V][V]) 
-{ 
+{
+	int x; 
     cout<<"Edge \tWeight\n"; 
-    for (int i = 1; i < V; i++) 
-        cout<<char(65+parent[i])<<" - "<<char(65+i)<<" \t"<<graph[i][parent[i]]<<" \n"; 
+    for (int i = 1; i < V; i++){
+    	x += graph[i][parent[i]];
+		cout<<char(65+parent[i])<<" - "<<char(65+i)<<" \t"<<graph[i][parent[i]]<<" \n";
+	} 
+	cout<<"total weight = "<<x;
+         
 } 
   
 // Function to construct and print MST for 
